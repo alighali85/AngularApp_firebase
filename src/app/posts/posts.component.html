@@ -1,6 +1,38 @@
+<div class="pageTop--margin"></div>
+
 <div class="block">
-  <div class="container text-center ">
-      <h1 style="margin-top: 100px"> here is Posts </h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 text-left">
+
+        <div class="card">
+            <div class="card-header">
+              <div class="containerTitle">Posts</div>
+              <ul>
+                <li>Archive</li>
+                <li>Deleted</li>
+                <li>+ Add new</li>
+              </ul>
+            </div>
+            <div class="card-block">
+
+                <div class="card" *ngFor="let post of postsObservable | async">
+                    <div class="card-block">
+                      <img src="{{post.img}}" alt="" class="postImage">
+                      <h3 class="card-title">{{post.title}}</h3>
+                      <p class="card-text">{{post.text}}</p>
+                      
+                    </div>
+                  </div>
+              
+              
+          </div>
+
+
+
+      </div>
+    </div>
   </div>
-  
 </div>
+       
+          

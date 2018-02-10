@@ -1,0 +1,47 @@
+.postImage {
+    width: 96px;
+    height: 96px;
+    float: left; 
+    margin: 4px 14px 4px 4px
+}
+
+.pageTop--margin {
+    height: 96px;
+    width: 100%;
+    max-width: 100%
+}
+
+.containerTitle {
+    color: #4fc3f7;
+    font-size: 19px
+}
+
+.card-header {
+    display: flex;
+    height: 48px;
+    font-size: 16px
+}
+
+.card-title {
+    font-size: 18px;
+    color: black;
+    margin: 14px 0px
+}
+
+.card h3 {
+    font-size: 14px;
+    color: #7a7a7a
+}
+
+.card-block {
+    padding: 14px
+}
+
+.card-header ul {
+    list-style-type: none;
+}
+
+.card-header li {
+    display: inline-block;
+    font-size: 14px
+}

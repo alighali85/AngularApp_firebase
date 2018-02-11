@@ -1,3 +1,4 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
@@ -14,6 +15,10 @@ import { MemberAreaComponent } from './member-area/member-area.component';
 import { NotesComponent } from './notes/notes.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { PostsComponent } from './posts/posts.component';
+import { AddNewComponent } from './posts/add-new/add-new.component';
+import { ArchiveComponent } from './posts/archive/archive.component';
+import { DeletedComponent } from './posts/deleted/deleted.component';
+import { PostsHomeComponent } from './posts/posts-home/posts-home.component';
 
 
 @NgModule({
@@ -24,6 +29,10 @@ import { PostsComponent } from './posts/posts.component';
     MemberAreaComponent,
     NotesComponent,
     PostsComponent,
+    PostsHomeComponent,
+    ArchiveComponent,
+    DeletedComponent,
+    AddNewComponent
   ],
   imports: [
     BrowserModule,

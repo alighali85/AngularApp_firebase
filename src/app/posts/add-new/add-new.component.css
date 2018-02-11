@@ -1,0 +1,10 @@
+.addPost--btn {
+    background: #4fc3f7;
+    border: none
+}
+
+.addNew--row  h4 {
+    width: 100%;
+    text-align: center;
+    color: #7a7a7a
+}

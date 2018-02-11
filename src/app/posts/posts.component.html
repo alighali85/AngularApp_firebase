@@ -8,13 +8,13 @@
         <div class="card">
             <div class="card-header">
               <div class="left-bar">
-              <div class="containerTitle">Posts</div>
+              <div routerLink="posts-home" class="containerTitle">Posts</div>
               <ul>
-                <li>Archive</li>
-                <li>Deleted</li>
+                <li><a routerLink="archive">Archive </a></li>
+                <li> <a routerLink="deleted">Deleted</a></li>
               </ul>
               </div>
-              <div class="addNew--button" (click)="addNewPost(show)">+ Add New</div>
+              <a class="addNew--button" routerLink= "add-new"> + Add New </a>
             </div>
             <div class="card-block">
 
@@ -22,18 +22,11 @@
                 <h2>Add New Post Now!</h2>
                 <div class="card block"></div>
               </div>
-<!-- home posts -->
-                <div class="card  card-inner" *ngFor="let post of postsObservable | async">
-                    <div class="card-block">
-                      <img src="{{post.img}}" alt="" class="postImage">
-                      <h3 class="card-title">{{post.title}}</h3>
-                      <p class="card-text">{{post.text}}</p>
-                    </div>
-                  </div>
- <!-- END home posts -->
+
               
               
           </div>
+          <router-outlet></router-outlet>
 
 
 

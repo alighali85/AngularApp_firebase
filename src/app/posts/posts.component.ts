@@ -10,6 +10,7 @@ import { Observable } from 'rxjs/Observable';
 
 export class PostsComponent implements OnInit {
 
+
   postsObservable : Observable <any[]>;
 
   constructor( private db : AngularFireDatabase ) { }
@@ -22,5 +23,13 @@ export class PostsComponent implements OnInit {
     return this.db.list( listPath ).valueChanges();
   }
   
+  addNewPost(val) {
+    if (val == 'show') {
+      return 'block'
+    }
 
+    if ( val == 'hide' ){
+      return 'none'
+    }
+  }
 }

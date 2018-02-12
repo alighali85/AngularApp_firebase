@@ -1,0 +1,38 @@
+<div class="pageTop--margin"></div>
+
+<div class="block">
+  <div class="container">
+    <div class="row">
+      <div class=" text-left">
+
+        <div class="card">
+            <div class="card-header">
+              <div class="left-bar">
+              <div routerLink="posts-home" class="containerTitle">Posts</div>
+              <ul>
+                <li><a routerLink="archive">Archive </a></li>
+                <li> <a routerLink="deleted">Deleted</a></li>
+              </ul>
+              </div>
+              <a class="addNew--button" routerLink= "add-new"> + Add New </a>
+            </div>
+            <div class="card-block">
+
+              <div [style.display]="addNewPost()" class="card addNew--post">
+                <h2>Add New Post Now!</h2>
+                <div class="card block"></div>
+              </div>
+
+              
+              
+          </div>
+          <router-outlet></router-outlet>
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+       
+          

@@ -19,6 +19,7 @@ import { AddNewComponent } from './posts/add-new/add-new.component';
 import { ArchiveComponent } from './posts/archive/archive.component';
 import { DeletedComponent } from './posts/deleted/deleted.component';
 import { PostsHomeComponent } from './posts/posts-home/posts-home.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { PostsHomeComponent } from './posts/posts-home/posts-home.component';
     PostsHomeComponent,
     ArchiveComponent,
     DeletedComponent,
-    AddNewComponent
+    AddNewComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -40,6 +42,8 @@ import { PostsHomeComponent } from './posts/posts-home/posts-home.component';
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,24 +3,27 @@
     <h4> Add new post</h4>
   </div>
 </div>
-<form #formData='ngForm' (ngSubmit)="addNewPost()" style="margin: 48px">
+<form #f='ngForm' (ngSubmit)="addNewPost(f)"  novalidate style="margin: 48px">
     <div class="form-group">
       <label for="postTitle">Post Title</label>
-      <input (keyup)="setPostTitle($event)"  [ngModel]="username" type="text" class="form-control postTitle" id="postTitle" placeholder="Give your post a title">
+      <input name="title"  ngModel type="text" class="form-control postTitle" id="postTitle" placeholder="Give your post a title">
       <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
     </div>
-    <p>{{postTilte}}</p>
+    <p>{{postTitle}}</p>
     <div class="form-group">
       <label for="postText">Post Text</label>
-      <textarea (keyup)="setPostText($event)" row="3" type="text" class="form-control postText" id="postText" placeholder="Enter some text fot the post"></textarea>
+      <textarea name="text"  ngModel row="3" type="text" class="form-control postText" id="postText" placeholder="Enter some text fot the post"></textarea>
     </div>
     {{postText}}
 
     <div class="form-group">
         <label for="postImage">Post Text</label>
-        <input  (keyup)="setPostImage($event)" type="text" class="form-control postImage" id="postImage" placeholder="Enter image URL">
+        <input  name="img"  ngModel type="text" class="form-control postImage" id="postImage" placeholder="Enter image URL">
       </div>
       {{postImage}}
     
     <button  type="submit" class="btn btn-primary addPost--btn"> + Add new Post </button>
   </form>
+
+  <input [(ngModel)]="firstName" ngModel> New input <span id="firstName"></span>
+  <a class="btn" (onclick)="showFirstName()"> show first name</a>

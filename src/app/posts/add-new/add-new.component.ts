@@ -3,6 +3,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms'
+import { NgForm } from '@angular/forms/src/directives/ng_form';
 
 @Component({
   selector: 'app-add-new',
@@ -10,37 +11,28 @@ import { FormsModule } from '@angular/forms'
   styleUrls: ['./add-new.component.css']
 })
 export class AddNewComponent implements OnInit {
-  posts: Observable<any[]>;
-  postTitleVali: any;
-  postTitle= '';
-  postText= '';
-  postImage= '';
-
+  posts: Observable<any>;
+  firstName: any ;
   constructor( private db: AngularFireDatabase ) { 
-    
+
   }
    
-  ngOnInit() { } 
+  ngOnInit() { 
+    this.posts = this.db.object( '/posts' ).valueChanges();
+  } 
 
-  addNewPost() {
-    this.db.list('posts').push({
-      title: this.postTitle , text: this.postText, img: this.postImage
-    })
-  
+  addNewPost(f: NgForm ) {
+    console.log(f.value);
+    this.db.list('posts').push(f.value)
   }
 
   getPosts( listPath ): Observable <any[]> {
     return this.db.list( listPath ).valueChanges();
   }
 
-  setPostTitle( event:any ) {
-    return this.postTitle += event.target.value;
-  }
-  setPostText( event:any ) {
-    return this.postText += event.target.value;
-  }
-  setPostImage( event:any ) {
-    return this.postImage += event.target.value;
+  showFirstName($event) {
+    console.log($event.target.value);
+    console.log(this.firstName)
   }
 
 }

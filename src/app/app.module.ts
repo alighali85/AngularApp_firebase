@@ -20,6 +20,7 @@ import { ArchiveComponent } from './posts/archive/archive.component';
 import { DeletedComponent } from './posts/deleted/deleted.component';
 import { PostsHomeComponent } from './posts/posts-home/posts-home.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     AngularFireDatabaseModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    AngularFontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

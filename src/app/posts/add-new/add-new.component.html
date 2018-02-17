@@ -19,11 +19,14 @@
     <div class="form-group">
         <label for="postImage">Post Text</label>
         <input  name="img"  ngModel type="text" class="form-control postImage" id="postImage" placeholder="Enter image URL">
-      </div>
-      {{postImage}}
+    </div>
+
+    <div class="form-group">
+      <label for="postTime">Post Icon</label>
+      <input  name="postTime"  [(ngModel)]="postTimeToShow"  ngModel type="text" class="form-control postTime" id="postTime" placeholder="Time">
+  </div>
     
     <button  type="submit" class="btn btn-primary addPost--btn"> + Add new Post </button>
   </form>
 
-  <input type="hidden" value={{postTime}}>Post time {{postTime}} <span id="firstName"></span>
-  <a class="btn" (click)="showFirstName()"> show first name {{uuu}}</a>
+ 

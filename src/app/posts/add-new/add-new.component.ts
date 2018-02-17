@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireDatabaseModule } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms'
 import { NgForm } from '@angular/forms/src/directives/ng_form';
 import * as $ from 'jquery';
 import { Data } from '@angular/router/src/config';
+import { posix } from 'path';
 
 declare var jquery:any;
 declare var javascript:any
@@ -19,36 +20,31 @@ declare var javascript:any
 export class AddNewComponent implements OnInit {
   
   posts: Observable<any>;
-  firstName: any ;
-  postTime: Data;
+  postTimeToShow: any;
+  postTime: any = {year: "", month: "", day: "", hour: "", minute: "" };
+
   constructor( private db: AngularFireDatabase ) { 
   }
    
   ngOnInit() {
-    this.postTime= new Date();
-    this.posts = this.db.object( '/posts' ).valueChanges();
+    let date = new Date();
+    this.postTime.year =  date.getFullYear().toString();
+    let local = "en-us";
+    this.postTime.month= date.toLocaleString(local, {month: "short"}).toString();;
+    this.postTime.day = date.getDate().toString();;
+    this.postTime.hour = date.getHours().toString();;
+    this.postTime.minute = date.getMinutes().toString();
+    this.postTimeToShow = this.postTime.day + " "+ this.postTime.month +" "+ this.postTime.year + " - " + this.postTime.hour + ":" + this.postTime.minute; 
+    console.log(this.postTime)
+    
   } 
 
   addNewPost(f: NgForm ) {
     console.log(f.value);
     this.db.list('posts').push(f.value);
-    $('')
     $('#addPost--form').css('display', 'none');
-    console.log(document.getElementById('newInput').innerHTML)
-  }
-
-  
-
-  deletePost(post:any) {
-
-  }
-
-  showFirstName() {
-    console.log(this.firstName)
   }
 
 }
-function newFunction() {
-  return this.postTitleInput;
-}
+
 

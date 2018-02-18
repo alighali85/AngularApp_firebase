@@ -11,9 +11,9 @@ import { Subscriber } from 'rxjs/Subscriber';
 })
 
 export class PostsHomeComponent implements OnInit {
-  itemsRef: AngularFireList<any>;
-  items: Observable<any[]>;
-  totalPostsNumber: any;
+  items: any;
+  postlist= [];
+  totalPostsNumber: number = 0;
   postsObservable : Observable <any>;
 
   constructor( private db: AngularFireDatabase ) {
@@ -23,25 +23,21 @@ export class PostsHomeComponent implements OnInit {
   ngOnInit() {
     
     this.postsObservable = this.getPosts('/posts');
-    this.totalPostsNumber = this.postsObservable.forEach (post => {
-      console.log (post.text)
+    this.items = this.db.list('/posts/').snapshotChanges().subscribe( actions => {
+      this.totalPostsNumber= 0;
+      actions.forEach(action => {
+        this.totalPostsNumber++;
+      })
     });
-    console.log( this.postsObservable)
   }
 
-  filteredSearch( title ) : Observable <any[]>{
-    return  this.db.list( title, ref => {
-      console.log(ref);
-      return ref.orderByChild('title')
-    } ).valueChanges();
-  
+  removePost($event) {
+    this.db.list('posts').remove($event.target.value)
   }
-  
-  getPosts( listPath ): Observable <any[]> {
-    let snap: any;
-    return  this.db.list( listPath, ref => {
-      return ref.orderByChild('postTime');
-    } ).valueChanges();
+  getPosts( listPath ):Observable<any[]> {
+    return  this.db.list(listPath).snapshotChanges().map(changes => {
+      return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
+    });
   }
 
   

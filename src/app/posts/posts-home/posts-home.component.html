@@ -1,11 +1,15 @@
 
 <!-- home posts -->
+<div class="container">
+<div class="row col-sm-10 col-sm-offset-1" > <h6> you have ( {{ totalPostsNumber }}) posts</h6></div>
+
 <div class="card  card-inner" *ngFor="let post of postsObservable | async; let i = index">
     <div class="card-block">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzZB2mDHQbfKjnCy1TSoEgmEdPti8NlUAGiVBGPgRSH7d7S9i2" alt="" class="postImage">
-      <h3 class="card-title">{{post.title}} ( {{ TotalPostsNumber }})</h3>
+      <h3 class="card-title">{{post.title}} </h3>
       <p class="card-text">{{post.text}}</p>
     </div>
-    <div class="card-footer">{{post.postTime}} --  No( {{i}})</div>
+    <div class="card-footer"> {{post.postTime}} <button class="btn" (click)="removePost($event)" value="{{post.key}}"> Delete </button></div>
   </div>
+</div>
 <!-- END home posts -->

@@ -1,8 +1,9 @@
 .postImage {
-    width: 96px;
-    height: 96px;
+    width: 70px;
+    height: 70px;
     float: left; 
-    margin: 0px 14px 14px 0px
+    margin: 0px 4px 4px 0px;
+    border-radius: 5px
 }
 
 .pageTop--margin {
@@ -21,7 +22,7 @@
     width: 48%;
     width: -webkit-calc(50% - 28px);
     box-sizing: border-box;
-    margin: 14px;
+    margin: 7px;
     max-height: 126px;
     overflow: hidden
 }
@@ -57,7 +58,7 @@
 }
 
 .card-block {
-    padding: 14px
+    padding: 7px
 }
 
 .card-header ul {

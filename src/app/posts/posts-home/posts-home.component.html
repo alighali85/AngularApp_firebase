@@ -12,4 +12,29 @@
     <div class="card-footer"> {{post.postTime}} <button class="btn" (click)="removePost($event)" value="{{post.key}}"> Delete </button></div>
   </div>
 </div>
+<form id= "addPost--form" #f='ngForm' (ngSubmit)="addNewPost(f)"  novalidate style="margin: 48px">
+  <div class="form-group">
+    <label for="postTitle">Post Title</label>
+    <input name="title"  ngModel type="text" class="form-control postTitle" id="postTitle" placeholder="Give your post a title">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <p>{{postTitle}}</p>
+  <div class="form-group">
+    <label for="postText">Post Text</label>
+    <textarea name="text"  ngModel row="3" type="text" class="form-control postText" id="postText" placeholder="Enter some text fot the post"></textarea>
+  </div>
+  {{postText}}
+
+  <div class="form-group">
+      <label for="postImage">Post Text</label>
+      <input  name="img"  ngModel type="text" class="form-control postImage" id="postImage" placeholder="Enter image URL">
+  </div>
+
+  <div class="form-group">
+    <label for="postTime">Post Icon</label>
+    <input  name="postTime"  [(ngModel)]="postTimeToShow"  ngModel type="text" class="form-control postTime" id="postTime" placeholder="Time">
+</div>
+  
+  <button  type="submit" class="btn btn-primary addPost--btn"> + Add new Post </button>
+</form>
 <!-- END home posts -->

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireDatabase, AngularFireAction,AngularFireList, snapshotChanges } from 'angularfire2/database';
+import { AngularFireDatabase,AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireModule } from 'angularfire2';
-import { Subscriber } from 'rxjs/Subscriber';
+import { NgForm } from '@angular/forms/src/directives/ng_form';
 
 @Component({
   selector: 'aposts-home',
@@ -11,6 +11,8 @@ import { Subscriber } from 'rxjs/Subscriber';
 })
 
 export class PostsHomeComponent implements OnInit {
+  postToEdit: any;
+  postTitle: any;
   items: any;
   postlist= [];
   totalPostsNumber: number = 0;
@@ -21,7 +23,6 @@ export class PostsHomeComponent implements OnInit {
        }
 
   ngOnInit() {
-    
     this.postsObservable = this.getPosts('/posts');
     this.items = this.db.list('/posts/').snapshotChanges().subscribe( actions => {
       this.totalPostsNumber= 0;
@@ -32,12 +33,19 @@ export class PostsHomeComponent implements OnInit {
   }
 
   removePost($event) {
-    this.db.list('posts').remove($event.target.value)
+    this.db.list('posts').remove($event.target.value).then(_ => console.log('success'))
+    .catch(err => console.log(err, 'You do not have access!'));
   }
+  
   getPosts( listPath ):Observable<any[]> {
     return  this.db.list(listPath).snapshotChanges().map(changes => {
       return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
     });
+  }
+
+  editPost($event) {
+    this.postToEdit = this.db.list('posts/'+ $event.target.value).valueChanges();
+    console.log("Post To Edite"+this.postToEdit);
   }
 
   

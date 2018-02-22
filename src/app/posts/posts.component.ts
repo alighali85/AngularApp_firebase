@@ -10,7 +10,6 @@ import { Observable } from 'rxjs/Observable';
 
 export class PostsComponent implements OnInit {
 
-
   postsObservable : Observable <any[]>;
 
   constructor( private db : AngularFireDatabase ) { }

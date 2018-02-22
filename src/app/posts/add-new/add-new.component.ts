@@ -5,11 +5,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms'
 import { NgForm } from '@angular/forms/src/directives/ng_form';
 import * as $ from 'jquery';
-import { Data } from '@angular/router/src/config';
-import { posix } from 'path';
+import { Router } from '@angular/router';
 
-declare var jquery:any;
-declare var javascript:any
+
 
 @Component({
   selector: 'app-add-new',
@@ -23,7 +21,7 @@ export class AddNewComponent implements OnInit {
   postTimeToShow: any;
   postTime: any = {year: "", month: "", day: "", hour: "", minute: "" };
 
-  constructor( private db: AngularFireDatabase ) { 
+  constructor( private db: AngularFireDatabase, private router: Router ) { 
   }
    
   ngOnInit() {
@@ -41,8 +39,11 @@ export class AddNewComponent implements OnInit {
 
   addNewPost(f: NgForm ) {
     console.log(f.value);
-    this.db.list('posts').push(f.value);
-    $('#addPost--form').css('display', 'none');
+    this.db.list('posts').push(f.value).then(_ => {
+      $('#addPost--form').css('display', 'none');
+      this.router.navigate(['/posts']);
+      console.log('Addes one post successfully ')
+    });
   }
 
 }
